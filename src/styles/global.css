@@ -1,6 +1,27 @@
 @import './tokens.css';
 @import './components.css';
 
+@font-face {
+  font-family: 'Noto Sans JP:Bold';
+  src: url('https://static.figma.com/font/NotoSansJP-VF_2') format('woff2');
+  font-style: normal;
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'Noto Sans JP:Medium';
+  src: url('https://static.figma.com/font/NotoSansJP-VF_2') format('woff2');
+  font-style: normal;
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'Noto Sans JP:Regular';
+  src: url('https://static.figma.com/font/NotoSansJP-VF_2') format('woff2');
+  font-style: normal;
+  font-weight: 400;
+}
+
 *,
 *::before,
 *::after {

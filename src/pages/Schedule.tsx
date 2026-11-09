@@ -1,7 +1,8 @@
-import { useState } from 'react'
-import { ChevronLeft, ChevronRight, Plus } from 'lucide-react'
+import { useEffect, useState } from 'react'
+import { Check, ChevronLeft, ChevronRight, Plus } from 'lucide-react'
 import { Avatar, Badge, Button, PageHeader, ScheduleBlock, Segmented, Select } from '../components'
-import { staffList, visits } from '../data/mock'
+import { staffList, visits, type Visit } from '../data/mock'
+import { AddScheduleDialog } from './AddScheduleDialog'
 
 const START_HOUR = 8
 const END_HOUR = 18
@@ -14,7 +15,22 @@ const toMin = (t: string) => {
 export function SchedulePage() {
   const [view, setView] = useState<'staff' | 'client'>('staff')
   const [range, setRange] = useState<'day' | 'week'>('day')
+  const [scheduleVisits, setScheduleVisits] = useState(visits)
+  const [isDialogOpen, setIsDialogOpen] = useState(false)
+  const [toastMessage, setToastMessage] = useState('')
   const total = (END_HOUR - START_HOUR) * 60
+
+  useEffect(() => {
+    if (!toastMessage) return
+    const timer = window.setTimeout(() => setToastMessage(''), 4000)
+    return () => window.clearTimeout(timer)
+  }, [toastMessage])
+
+  const addVisit = (visit: Visit) => {
+    setScheduleVisits((currentVisits) => [...currentVisits, visit])
+    setIsDialogOpen(false)
+    setToastMessage(`予定を追加しました（${visit.staff}・${visit.start}–${visit.end} ${visit.client}さま）`)
+  }
 
   return (
     <>
@@ -34,7 +50,7 @@ export function SchedulePage() {
             <Button>今日</Button>
             <Button size="m" icon={ChevronRight} aria-label="翌日" />
             <span style={{ font: 'var(--text-heading-m)', margin: '0 var(--space-8)' }}>2026年11月9日（月）</span>
-            <Button variant="primary" icon={Plus}>
+            <Button variant="primary" icon={Plus} onClick={() => setIsDialogOpen(true)}>
               予定を追加
             </Button>
           </div>
@@ -57,12 +73,12 @@ export function SchedulePage() {
 
             {staffList.map((s) => (
               <Row key={s.name} name={s.name} role={s.role}>
-                {visits
+                {scheduleVisits
                   .filter((v) => v.staff === s.name)
-                  .map((v) => {
+                  .map((v, index) => {
                     const left = ((toMin(v.start) - START_HOUR * 60) / total) * 100
                     const width = ((toMin(v.end) - toMin(v.start)) / total) * 100
-                    return <ScheduleBlock key={v.start} service={v.service} time={`${v.start}–${v.end}`} client={v.client} style={{ left: `calc(${left}% + 2px)`, width: `calc(${width}% - 4px)` }} />
+                    return <ScheduleBlock key={`${v.start}-${v.end}-${v.client}-${index}`} service={v.service} time={`${v.start}–${v.end}`} client={v.client} style={{ left: `calc(${left}% + 2px)`, width: `calc(${width}% - 4px)` }} />
                   })}
               </Row>
             ))}
@@ -77,6 +93,13 @@ export function SchedulePage() {
           <Badge tone="warning">未割当 1 件</Badge>
         </div>
       </div>
+      {isDialogOpen && <AddScheduleDialog visits={scheduleVisits} onClose={() => setIsDialogOpen(false)} onSubmit={addVisit} />}
+      {toastMessage && (
+        <div className="schedule-toast" role="status">
+          <Check size={16} strokeWidth={2} />
+          <span>{toastMessage}</span>
+        </div>
+      )}
     </>
   )
 
