@@ -33,3 +33,8 @@ npm run dev
 - `src/components/` … Figma コンポーネント（Button, Badge, Input, Checkbox, Segment Item, Nav Item, Sidebar, Page Header, Avatar, Table Cell, Stat Card, Schedule Block）と 1:1 で対応。
 - アイコンは Lucide（Figma 側の `icon/*` も Lucide の SVG から作成）。
 - フォントは Noto Sans JP。
+
+## ドキュメント
+
+- [画面遷移仕様書](docs/screen-flow.md)
+- [デザインシステムのルール](docs/design-system.md)
