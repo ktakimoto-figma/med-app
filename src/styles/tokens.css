@@ -1,0 +1,115 @@
+/*
+ * Design tokens — Figma「med-app-ds」の Variables と 1:1 で対応
+ * (各 Variable の Code syntax: WEB と同じ名前)
+ */
+:root {
+  /* Primitives */
+  --white: #ffffff;
+  --gray-50: #f4f6f9;
+  --gray-100: #ebeef2;
+  --gray-200: #dde2e8;
+  --gray-300: #c5ccd5;
+  --gray-500: #8792a0;
+  --gray-600: #5e6876;
+  --gray-800: #2f3640;
+  --gray-900: #1c2128;
+  --orange-50: #fff4e8;
+  --orange-100: #ffe3c4;
+  --orange-300: #fbb878;
+  --orange-500: #ef7a1a;
+  --orange-600: #d9650a;
+  --orange-700: #a84e08;
+  --blue-50: #eaf3fc;
+  --blue-100: #d3e6f8;
+  --blue-500: #2f7fd0;
+  --blue-600: #1f66b0;
+  --green-50: #e9f7ee;
+  --green-100: #cfebda;
+  --green-500: #34a563;
+  --green-600: #23864a;
+  --yellow-50: #fff8db;
+  --yellow-500: #e9b500;
+  --yellow-700: #8a6500;
+  --red-50: #fdecec;
+  --red-500: #e25555;
+  --red-600: #c93636;
+  --purple-50: #f3eefc;
+  --purple-100: #e3d8f7;
+  --purple-500: #7c5cc4;
+  --purple-600: #6646ae;
+
+  /* Color (semantic) */
+  --color-bg-canvas: var(--gray-50);
+  --color-bg-surface: var(--white);
+  --color-bg-subtle: var(--gray-100);
+  --color-bg-hover: var(--gray-50);
+  --color-bg-brand: var(--orange-500);
+  --color-bg-brand-hover: var(--orange-600);
+  --color-bg-brand-subtle: var(--orange-50);
+  --color-bg-brand-disabled: var(--orange-300);
+  --color-bg-inverse: var(--gray-900);
+  --color-text-primary: var(--gray-900);
+  --color-text-secondary: var(--gray-600);
+  --color-text-tertiary: var(--gray-500);
+  --color-text-on-brand: var(--white);
+  --color-text-brand: var(--orange-700);
+  --color-text-link: var(--blue-600);
+  --color-icon-default: var(--gray-600);
+  --color-icon-strong: var(--gray-900);
+  --color-icon-brand: var(--orange-500);
+  --color-icon-on-brand: var(--white);
+  --color-border-default: var(--gray-200);
+  --color-border-strong: var(--gray-300);
+  --color-border-brand: var(--orange-500);
+  --color-status-neutral-bg: var(--gray-100);
+  --color-status-neutral-text: var(--gray-600);
+  --color-status-info-bg: var(--blue-50);
+  --color-status-info-text: var(--blue-600);
+  --color-status-success-bg: var(--green-50);
+  --color-status-success-text: var(--green-600);
+  --color-status-warning-bg: var(--yellow-50);
+  --color-status-warning-text: var(--yellow-700);
+  --color-status-danger-bg: var(--red-50);
+  --color-status-danger-text: var(--red-600);
+  --color-service-body-bg: var(--blue-100);
+  --color-service-body-accent: var(--blue-500);
+  --color-service-life-bg: var(--green-100);
+  --color-service-life-accent: var(--green-500);
+  --color-service-mixed-bg: var(--purple-100);
+  --color-service-mixed-accent: var(--purple-500);
+
+  /* Spacing */
+  --space-2: 2px;
+  --space-4: 4px;
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --space-40: 40px;
+
+  /* Radius */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-full: 999px;
+
+  /* Effect styles */
+  --shadow-card: 0 1px 3px rgba(28, 33, 40, 0.06);
+  --shadow-popover: 0 8px 24px rgba(28, 33, 40, 0.12);
+
+  /* Text styles (font / size / line-height) */
+  --font-family: 'Noto Sans JP', 'Hiragino Sans', sans-serif;
+  --text-display: 700 32px/1.2 var(--font-family);
+  --text-heading-xl: 700 24px/1.4 var(--font-family);
+  --text-heading-l: 700 20px/1.4 var(--font-family);
+  --text-heading-m: 700 16px/1.5 var(--font-family);
+  --text-body-m: 400 14px/1.6 var(--font-family);
+  --text-body-m-bold: 700 14px/1.6 var(--font-family);
+  --text-body-s: 400 12px/1.5 var(--font-family);
+  --text-label-m: 500 14px/1.5 var(--font-family);
+  --text-label-s: 500 12px/1.5 var(--font-family);
+  --text-caption: 400 11px/1.5 var(--font-family);
+}
